@@ -1,28 +1,32 @@
-<div
-  class="feedback-banner"
-  (click)="onClick($event)"
-  [ngClass]="open ? 'open' : ''"
->
+<div>
   <div *ngIf="open">
-    <p>
-      Du hast etwas entdeckt, was noch nicht so gut läuft?
-      <br />
-      Gib uns doch ein bisschen feedback, was wir noch verbessen können:
-    </p>
+    <div class="overlay" (click)="onClickOutside()"></div>
+    <div class="feedback-banner" [ngClass]="open ? 'open' : ''">
+      <p>
+        Du hast etwas entdeckt, was noch nicht so gut läuft?
+        <br />
+        Gib uns doch ein bisschen feedback, was wir noch verbessen können:
+      </p>
 
-    <form [formGroup]="form" (submit)="onSubmit()">
-      <div class="form-group">
-        <textarea
-          type="text"
-          class="form-control"
-          row="3"
-          formControlName="text"
-        ></textarea>
-      </div>
-      <button class="btn btn-primary">Absenden</button>
-    </form>
+      <form [formGroup]="form" (submit)="onSubmit()">
+        <div class="form-group">
+          <textarea
+            type="text"
+            class="form-control"
+            row="3"
+            formControlName="text"
+          ></textarea>
+        </div>
+        <button class="btn btn-primary">Absenden</button>
+      </form>
+    </div>
   </div>
-  <div *ngIf="!open" class="text-center icons">
+
+  <div
+    *ngIf="!open"
+    class="feedback-banner text-center icons"
+    (click)="onClick()"
+  >
     <div>
       <i class="material-icons">feedback</i>
       <br />

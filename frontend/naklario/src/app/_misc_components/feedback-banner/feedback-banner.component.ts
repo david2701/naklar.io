@@ -31,12 +31,12 @@ export class FeedbackBannerComponent implements OnInit {
     return this.form.controls;
   }
 
-  onClick(event) {
-    // filter click event
-    if (["textarea", "button"].includes(event.target.localName)) {
-      return;
-    }
+  onClick() {
     this.open = !this.open;
+  }
+
+  onClickOutside() {
+    this.open = false;
   }
 
   onSubmit() {

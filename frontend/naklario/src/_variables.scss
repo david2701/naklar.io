@@ -1,3 +1,4 @@
+
 :root {
   --primary-color: #ed8515;
   --primary-color-light: rgba(239, 133, 21, 0.3);
@@ -5,8 +6,8 @@
   --white: white;
 }
 
-$theme-colors: (
-  "primary": #ed8515,
-  "danger": red,
-);
 $primary: #ed8515;
+
+$theme-colors: (
+  "primary": $primary,
+);
