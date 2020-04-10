@@ -1,7 +1,5 @@
-@import 'assets/style/global.scss';
-
-// boostrap config
-$enable-gradients: true;
+@import "variables";
+@import "../node_modules/bootstrap/scss/bootstrap";
 
 body {
   // apply the google font
@@ -38,5 +36,3 @@ body {
 .bg-gray {
   background-color: var(--light-gray);
 }
-
-
