@@ -1,0 +1,34 @@
+<div
+  class="feedback-banner"
+  (click)="onClick($event)"
+  [ngClass]="open ? 'open' : ''"
+>
+  <div *ngIf="open">
+    <p>
+      Du hast etwas entdeckt, was noch nicht so gut läuft?
+      <br />
+      Gib uns doch ein bisschen feedback, was wir noch verbessen können:
+    </p>
+
+    <form [formGroup]="form" (submit)="onSubmit()">
+      <div class="form-group">
+        <textarea
+          type="text"
+          class="form-control"
+          row="3"
+          formControlName="text"
+        ></textarea>
+      </div>
+      <button class="btn btn-primary">Absenden</button>
+    </form>
+  </div>
+  <div *ngIf="!open" class="text-center icons">
+    <div>
+      <i class="material-icons">feedback</i>
+      <br />
+      <small>
+        Naklar.io Beta-Version
+      </small>
+    </div>
+  </div>
+</div>
