@@ -1,4 +1,4 @@
-<div class="mx-3">
+<div class="mx-3" id="voice-message">
   <div *ngIf="hasRecording" style="display: inline-block;">
     <button type="button" class="btn" (click)="playRecording()">Start</button>
   </div>
@@ -8,7 +8,9 @@
       type="button"
       (mousedown)="startRecording()"
       (mouseup)="stopRecording()"
+      [ngClass]="isRecording ? 'pulse': ''"
     >
+    <mat-icon>microphone</mat-icon>
       Record
     </button>
   </div>

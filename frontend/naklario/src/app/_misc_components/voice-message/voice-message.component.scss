@@ -1,0 +1,26 @@
+$color: #dc3545;
+
+#voice-message {
+  .pulse {
+    background: $color;
+    box-shadow: 0 0 0 0 rgba($color: $color, $alpha: 1);
+    animation: pulse-primary 1s infinite;
+  }
+
+  @keyframes pulse-primary {
+    0% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba($color: $color, $alpha: 0.7);
+    }
+
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 10px rgba($color: $color, $alpha: 0);
+    }
+
+    100% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba($color: $color, $alpha: 0);
+    }
+  }
+}

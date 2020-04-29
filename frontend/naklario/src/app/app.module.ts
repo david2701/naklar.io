@@ -2,7 +2,7 @@ import {
   BrowserModule,
   BrowserTransferStateModule,
 } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
@@ -11,6 +11,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { LoadingBarRouterModule } from "@ngx-loading-bar/router";
 import { LoadingBarHttpClientModule } from "@ngx-loading-bar/http-client";
+import { MatIconRegistry, MatIconModule } from "@angular/material/icon";
+import { DomSanitizer } from "@angular/platform-browser";
 
 import { JwtInterceptor, ErrorInterceptor } from "./_helpers";
 
@@ -85,6 +87,8 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
     // Stuff for reactive / template driven forms
     ReactiveFormsModule,
     FormsModule,
+    //material icons
+    MatIconModule,
     // modules (arbitrary order)
     AccountModule,
     RouletteModule,
@@ -102,5 +106,12 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
     AudioRecordingService,
   ],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(matIconRegistry: MatIconRegistry, domSanitizer: DomSanitizer) {
+    matIconRegistry.addSvgIconSet(
+      domSanitizer.bypassSecurityTrustResourceUrl("./assets/mdi.svg")
+    );
+  }
+}
