@@ -11,6 +11,7 @@ import { StudentExplanationComponent } from "./student-explanation/student-expla
 import { TutorExplanationComponent } from "./tutor-explanation/tutor-explanation.component";
 import { SafePipe } from "./safe.pipe";
 import { AudioAutoplayComponent } from "./audio-autoplay/audio-autoplay.component";
+import { VoiceMessageComponent } from './voice-message/voice-message.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { AudioAutoplayComponent } from "./audio-autoplay/audio-autoplay.componen
     StudentExplanationComponent,
     TutorExplanationComponent,
     AudioAutoplayComponent,
+    VoiceMessageComponent,
   ],
   imports: [CommonModule, NgbModule],
   exports: [
@@ -31,6 +33,7 @@ import { AudioAutoplayComponent } from "./audio-autoplay/audio-autoplay.componen
     StudentExplanationComponent,
     TutorExplanationComponent,
     AudioAutoplayComponent,
+    VoiceMessageComponent
   ],
 })
 export class MiscComponentsModule {}

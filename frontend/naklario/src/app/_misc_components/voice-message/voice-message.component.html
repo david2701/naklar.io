@@ -1,0 +1,15 @@
+<div class="mx-3">
+  <div *ngIf="hasRecording" style="display: inline-block;">
+    <button type="button" class="btn" (click)="playRecording()">Start</button>
+  </div>
+  <div style="display: inline-block;">
+    <button
+      class="btn btn-primary"
+      type="button"
+      (mousedown)="startRecording()"
+      (mouseup)="stopRecording()"
+    >
+      Record
+    </button>
+  </div>
+</div>

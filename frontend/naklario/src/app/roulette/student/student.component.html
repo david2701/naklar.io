@@ -8,7 +8,11 @@
 <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="subjects">Für welches Fach hast du eine Frage?</label>
-    <select name="subjects" class="form-control custom-select" [formControl]="f.subject">
+    <select
+      name="subjects"
+      class="form-control custom-select"
+      [formControl]="f.subject"
+    >
       <option *ngFor="let subject of constants?.subjects" [value]="subject.id">
         {{ subject.name }}
       </option>
@@ -19,13 +23,20 @@
       </div>
     </div>
   </div>
-
-  <button
-    type="submit"
-    class="btn btn-primary"
-    [disabled]="submitSuccess || loading"
-  >
-    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-    Absenden
-  </button>
+  <div class="from-group">
+    <div class="row">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="submitSuccess || loading"
+      >
+        <span
+          *ngIf="loading"
+          class="spinner-border spinner-border-sm mr-1"
+        ></span>
+        Absenden
+      </button>
+      <misc-voice-message></misc-voice-message>
+    </div>
+  </div>
 </form>

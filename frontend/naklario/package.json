@@ -35,7 +35,9 @@
     "bootswatch": "^4.4.1",
     "express": "^4.17.1",
     "http-proxy-middleware": "^1.0.3",
+    "moment": "^2.24.0",
     "ng5-slider": "^1.2.4",
+    "recordrtc": "^5.5.9",
     "rxjs": "~6.5.5",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

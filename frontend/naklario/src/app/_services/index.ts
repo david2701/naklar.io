@@ -7,3 +7,4 @@ export * from "./roulette.service";
 export * from "./user-resolver.service";
 export * from "./toast.service";
 export * from "./banner-resolver.service";
+export * from "./audio-recording.service";

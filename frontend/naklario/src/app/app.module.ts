@@ -9,7 +9,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 // Third party modules
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-
 import { LoadingBarRouterModule } from "@ngx-loading-bar/router";
 import { LoadingBarHttpClientModule } from "@ngx-loading-bar/http-client";
 
@@ -43,6 +42,7 @@ import {
   AuthenticationService,
   ToastService,
   RouletteService,
+  AudioRecordingService,
 } from "./_services";
 
 import { MiscComponentsModule } from "./_misc_components/misc-components.module";
@@ -99,6 +99,7 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
     DatabaseService,
     RouletteService,
     ToastService,
+    AudioRecordingService,
   ],
   bootstrap: [AppComponent],
 })
