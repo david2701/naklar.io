@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 
 @Component({
   selector: 'app-tutors',
@@ -7,7 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TutorsComponent implements OnInit {
 
-  constructor() { }
+  tutorReasons = [
+    {
+      h: 'Flexibel',
+      text: 'Hilf, wann und wo auch immer Du willst.'
+    }, {
+      h: '#gutfürskarma',
+      text: 'Ehrenamtlich Helfen war noch nie so toll!'
+    }, {
+      h: 'Einfach',
+      text: 'Alles, was Du brauchst ist Dein Wissen.'
+    }
+  ]
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

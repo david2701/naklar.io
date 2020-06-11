@@ -1,51 +1,55 @@
 <div class="container">
-  <h1 class="primary-color">Für Tutoren</h1>
+  <h1 class="primary-color">Schön, dass du da bist!</h1>
   <p>
-    Liebe/r Tutor/in,
-  </p>
-
-  <p>
-    wir finden es super, dass Du Dich engagieren und Schülern helfen möchtest.
-    Alles was du dazu brauchst:
+    Die Schüler brauchen Deine Hilfe und helfen kann jeder ;)
+    <br>
+    Wenn du…
   </p>
 
   <ul>
-    <li>
-      Fachliches Wissen das du gerne weitergeben möchtet
-    </li>
-    <li>
-      Sympathisches Auftreten und Spaß an der Arbeit mit Kindern
-    </li>
-    <li>
-      Einen Computer mit Webcam und Mikrofon; im Besten Fall ein Tablet um die
-      virtuelle Tafel nutzen zu können
-    </li>
-    <li>
-      Ruhigen Raum und stabiles Internet
-    </li>
-
-    <li>
-      Ein Tutoren-Profil:
-      <a routerLink="/account/tutor/register">hier anlegen</a>
-    </li>
+    <li>Dein Fachliches Wissen weitergeben möchtest</li>
+    <li>Spaß an der Arbeit mit Kindern hast</li>
+    <li>Über Computer mit einem Mikrofon/ Webcam verfügst</li>
   </ul>
 
-  <p>
-    Sobald du dein Profil bei uns eingeschickt habt, melden wir uns bei Dir und
-    verifizieren Dich als Tutor/in. Dann kann es sofort losgehen!
-  </p>
+  <p>…bist du hier genau richtig!</p>
 
-  <p>
-    Viel Spaß!
-    <br />
-    Dein naklar.io Team
-  </p>
+  <div>
+    <ng-container *ngTemplateOutlet="becomeTutor"></ng-container>
+  </div>
 
-  <small>
+  <h2 class="mt-5 text-center">Warum du Tutor werden solltest:</h2>
+
+  <div class="row mt-4">
+    <div class="col-12 col-md-4 text-center" *ngFor="let reason of tutorReasons">
+      <h4>{{reason.h}}</h4>
+      <p>{{reason.text}}</p>
+    </div>
+  </div>
+
+  <h3 class="mt-5">Und so einfach geht's:</h3>
+
+  <div class="row mt-3">
+    <div class="col-12 col-md-6 text-center">
+      <div class="w-100">ICON</div>
+      <p class="px-5">Profil mit einem sympatischen Foto und einer Verifizierungsdatei anlegen: <a [routerLink]="['/','account','tutor','register']">hier</a></p>
+    </div>
+    <div class="col-12 col-md-6 text-center">
+      <div class="w-100">ICON</div>
+      <p class="px-5">Nach deiner Email-Bestätigung schalten wir Dein Profil frei und Du bist ein offizieller naklar.io-Tutor!</p>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <small>
     PS: Schreib uns gerne, wenn du Anregungen oder Wünsche habt, die noch auf
     der Plattform fehlen oder verbessert werden können.
     <a href="mailto:info@naklar.io">
       info@naklar.io
     </a>
-  </small>
+  </small></div>
 </div>
+
+<ng-template #becomeTutor>
+  <button class="btn btn-primary">Jetzt Tutor werden</button>
+</ng-template>
