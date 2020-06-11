@@ -1,0 +1,20 @@
+FROM node:14.2.0-alpine AS builder
+
+WORKDIR /usr/src/app
+
+#COPY ./naklario/package*.json ./
+
+#RUN npm i
+
+#COPY ./naklario ./
+
+COPY ./start_dev_server.sh /scripts/start_dev_server.sh
+
+RUN chmod +x /scripts/start_dev_server.sh
+
+VOLUME ["/usr/src/app"]
+
+EXPOSE 4200
+
+#ENTRYPOINT ["npm", "i", "&&", "./node_modules/.bin/ng", "serve", "--host",  "0.0.0.0", "--publicHost", "https://naklario-dev.berger.cf/", "--disableHostCheck", "true"]
+ENTRYPOINT ["/scripts/start_dev_server.sh"]
