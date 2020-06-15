@@ -1,7 +1,9 @@
-from django.core.management.base import BaseCommand
-from roulette.models import StudentRequest, TutorRequest
-from django.utils import timezone
 from datetime import timedelta
+
+from django.core.management.base import BaseCommand
+from django.utils import timezone
+
+from roulette.models import StudentRequest, TutorRequest
 
 
 class Command(BaseCommand):
@@ -9,11 +11,10 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         r = StudentRequest.objects.filter(
-            last_poll__lte=timezone.now()-timedelta(seconds=30))
+            last_poll__lte=timezone.now()-timedelta(seconds=20)).filter(is_active=True)
         for i in r:
-            i.manual_delete()
+            i.deactivate()
         r = TutorRequest.objects.filter(
-            last_poll__lte=timezone.now()-timedelta(seconds=30))
+            last_poll__lte=timezone.now()-timedelta(seconds=60)).filter(is_active=True)
         for i in r:
-            i.manual_delete()
-        print("deleted!")
+            i.deactivate()

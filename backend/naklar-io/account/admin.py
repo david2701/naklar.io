@@ -1,5 +1,8 @@
+import csv
+
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
+from django.http import HttpResponse
 from django.utils.translation import gettext as _
 
 from .forms import CustomUserChangeForm, CustomUserCreationForm
@@ -11,6 +14,35 @@ admin.site.register(SchoolType)
 admin.site.register(State)
 admin.site.register(Subject)
 
+class ExportCsvMixin:
+    def export_csv(self, request, queryset):
+
+        meta = self.model._meta
+        field_names = [field.name for field in meta.fields if field.name != "password"]
+        field_names.append("type")
+
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename={}.csv'.format(meta)
+        writer = csv.writer(response)
+
+        writer.writerow(field_names)
+        for obj in queryset:
+            row = writer.writerow([self.get_data(obj, field) for field in field_names])
+
+        return response
+
+    export_csv.short_description = "CSV exportieren"
+
+    def get_data(self, obj, field):
+        if field == "type":
+            if hasattr(obj, "tutordata"):
+                return "tutor"
+            elif hasattr(obj, "studentdata"):
+                return "student"
+            else:
+                return "nothing"
+        else:
+            return getattr(obj, field)
 
 class StudentDataInline(admin.StackedInline):
     model = StudentData
@@ -74,7 +106,7 @@ class UnverifiedTutorFilter(admin.SimpleListFilter):
             return queryset.filter(tutordata__isnull=False).filter(tutordata__verified=True)
 
 
-class CustomUserAdmin(UserAdmin):
+class CustomUserAdmin(UserAdmin, ExportCsvMixin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
     model = CustomUser
@@ -100,6 +132,7 @@ class CustomUserAdmin(UserAdmin):
                     'is_staff', 'is_active')}), )
     search_fields = ('email',)
     ordering = ['-date_joined']
+    actions = ("export_csv", )
 
 
 admin.site.register(CustomUser, CustomUserAdmin)
