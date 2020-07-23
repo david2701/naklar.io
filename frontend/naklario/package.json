@@ -2,6 +2,12 @@
   "name": "naklario",
   "version": "0.0.0",
   "scripts": {
+    "android": "tns run android --env.aot",
+    "ios": "tns run ios --env.aot",
+    "mobile": "tns run",
+    "preview": "tns preview",
+    "ngcc": "ngcc --properties es2015 module main --first-only",
+    "postinstall": "npm run ngcc",
     "ng": "ng",
     "start": "nice -10 ng serve",
     "build": "ng build",
@@ -15,6 +21,11 @@
   },
   "private": true,
   "dependencies": {
+    "@nativescript/angular": "~9.0.0",
+    "@nativescript/core": "~6.5.5",
+    "@nativescript/theme": "~2.2.1",
+    "reflect-metadata": "~0.1.12",
+    "tslib": "^1.10.0",
     "@angular/animations": "~9.1.9",
     "@angular/common": "~9.1.9",
     "@angular/compiler": "~9.1.9",
@@ -25,6 +36,7 @@
     "@angular/platform-browser-dynamic": "~9.1.9",
     "@angular/platform-server": "~9.1.9",
     "@angular/router": "~9.1.9",
+    "@nativescript/schematics": "^9.0.0",
     "@ng-bootstrap/ng-bootstrap": "^6.0.2",
     "@ng-select/ng-select": "^4.0.0",
     "@nguniversal/express-engine": "^9.1.1",
@@ -38,10 +50,12 @@
     "material-design-icons": "^3.0.1",
     "ng5-slider": "^1.2.4",
     "rxjs": "~6.5.5",
-    "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
+    "nativescript-dev-webpack": "~1.5.0",
+    "@nativescript/schematics": "~2.0.0",
+    "@nativescript/tslint-rules": "~0.0.5",
     "@angular-devkit/build-angular": "~0.901.7",
     "@angular/cli": "~9.1.7",
     "@angular/compiler-cli": "~9.1.9",
@@ -63,5 +77,8 @@
     "ts-node": "~8.3.0",
     "tslint": "~5.18.0",
     "typescript": "~3.7.5"
+  },
+  "nativescript": {
+    "id": "org.nativescript.ngsample"
   }
 }
